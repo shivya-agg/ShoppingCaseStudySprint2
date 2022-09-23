@@ -30,7 +30,6 @@
 		D7A2044028DC47BE005719EA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2043F28DC47BE005719EA /* Validation.swift */; };
 		D7A2044228DC4859005719EA /* DBOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2044128DC4859005719EA /* DBOperationsManager.swift */; };
 		D7A2044428DC72AB005719EA /* ShoppingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */; };
-		D7F00B5028DDF54000DB3BC7 /* AlamofireNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F00B4F28DDF54000DB3BC7 /* AlamofireNetworkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +82,6 @@
 		D7A2043F28DC47BE005719EA /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D7A2044128DC4859005719EA /* DBOperationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBOperationsManager.swift; sourceTree = "<group>"; };
 		D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTabBarViewController.swift; sourceTree = "<group>"; };
-		D7F00B4F28DDF54000DB3BC7 /* AlamofireNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkViewController.swift; sourceTree = "<group>"; };
 		D98CD8C7601E26DF261A52F7 /* Pods_CaseStudySprint2_CaseStudySprint2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaseStudySprint2_CaseStudySprint2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,7 +160,6 @@
 				D7A2043728DC2F08005719EA /* AddToCartViewController.swift */,
 				D7A2043F28DC47BE005719EA /* Validation.swift */,
 				D7A2044128DC4859005719EA /* DBOperationsManager.swift */,
-				D7F00B4F28DDF54000DB3BC7 /* AlamofireNetworkViewController.swift */,
 				D758F8A728DAD428007072F6 /* Main.storyboard */,
 				D758F8AD28DAD429007072F6 /* Assets.xcassets */,
 				D758F8AF28DAD429007072F6 /* LaunchScreen.storyboard */,
@@ -447,7 +444,6 @@
 				D758F8AC28DAD428007072F6 /* CaseStudySprint2.xcdatamodeld in Sources */,
 				D7A2044028DC47BE005719EA /* Validation.swift in Sources */,
 				D7A2043828DC2F08005719EA /* AddToCartViewController.swift in Sources */,
-				D7F00B5028DDF54000DB3BC7 /* AlamofireNetworkViewController.swift in Sources */,
 				D758F8E128DB7588007072F6 /* CategoryTableViewController.swift in Sources */,
 				D7A2044228DC4859005719EA /* DBOperationsManager.swift in Sources */,
 				D758F8A228DAD428007072F6 /* AppDelegate.swift in Sources */,

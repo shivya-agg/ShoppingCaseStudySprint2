@@ -401,20 +401,20 @@
         <scene sceneID="qlI-Fh-YgW">
             <objects>
                 <tableViewController id="ceh-tF-vla" customClass="CategoryTableViewController" customModule="CaseStudySprint2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3ri-Ap-ivg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3ri-Ap-ivg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="Zgx-Ar-h4c" customClass="CategoryTableViewCell" customModule="CaseStudySprint2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="40" id="Zgx-Ar-h4c" customClass="CategoryTableViewCell" customModule="CaseStudySprint2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zgx-Ar-h4c" id="fUk-qE-Yiv">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWP-MD-jD0">
-                                            <rect key="frame" x="40" y="11" width="334" height="21"/>
+                                            <rect key="frame" x="60" y="11" width="314" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -424,7 +424,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="aWP-MD-jD0" secondAttribute="trailing" constant="20" id="4a5-UQ-Yd8"/>
                                         <constraint firstItem="aWP-MD-jD0" firstAttribute="centerY" secondItem="fUk-qE-Yiv" secondAttribute="centerY" id="BP3-Da-zES"/>
                                         <constraint firstItem="aWP-MD-jD0" firstAttribute="top" secondItem="fUk-qE-Yiv" secondAttribute="topMargin" id="KNU-Qi-a5t"/>
-                                        <constraint firstItem="aWP-MD-jD0" firstAttribute="leading" secondItem="fUk-qE-Yiv" secondAttribute="leadingMargin" constant="20" id="PAW-zI-D7t"/>
+                                        <constraint firstItem="aWP-MD-jD0" firstAttribute="leading" secondItem="fUk-qE-Yiv" secondAttribute="leadingMargin" constant="40" id="PAW-zI-D7t"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

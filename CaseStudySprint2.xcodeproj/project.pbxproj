@@ -162,13 +162,13 @@
 				D7A2043728DC2F08005719EA /* AddToCartViewController.swift */,
 				D7A2043F28DC47BE005719EA /* Validation.swift */,
 				D7A2044128DC4859005719EA /* DBOperationsManager.swift */,
+				D7F00B4F28DDF54000DB3BC7 /* AlamofireNetworkViewController.swift */,
 				D758F8A728DAD428007072F6 /* Main.storyboard */,
 				D758F8AD28DAD429007072F6 /* Assets.xcassets */,
 				D758F8AF28DAD429007072F6 /* LaunchScreen.storyboard */,
 				D758F8B228DAD429007072F6 /* Info.plist */,
 				D7A2043B28DC40A3005719EA /* GoogleService-Info.plist */,
 				D758F8AA28DAD428007072F6 /* CaseStudySprint2.xcdatamodeld */,
-				D7F00B4F28DDF54000DB3BC7 /* AlamofireNetworkViewController.swift */,
 			);
 			path = CaseStudySprint2;
 			sourceTree = "<group>";

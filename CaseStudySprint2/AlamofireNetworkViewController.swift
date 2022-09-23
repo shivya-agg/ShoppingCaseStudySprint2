@@ -20,7 +20,13 @@ class AlamofireNetworkViewController: UIViewController {
         
         Alamofire.request("https://dummyjson.com/products/categories", method: .post, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             switch response.result {
-                
+                case .success:
+                if let categoryDict: NSDictionary = response.value as! NSDictionary? {
+                    print(categoryDict)
+                }
+                break
+                case .failure(let error):
+                    print(error)
             }
         }
     }

@@ -1,48 +1,66 @@
 //
-//  CategoryTableViewController.swift
+//  AddToCartTableViewController.swift
 //  CaseStudySprint2
 //
-//  Created by Capgemini-DA226 on 9/21/22.
+//  Created by Capgemini-DA226 on 9/24/22.
 //
 
 import UIKit
 import Alamofire
 
-class CategoryTableViewController: UITableViewController {
-
-   //creating category data array
-    var categroryData = [String]()
+class ProductTableViewCell: UITableViewCell {
     
-    //image array
-    var categoryImageArray = ["smartphone2.png","laptop.png", "fragrances.png", "skincare.png", "groceries.png", "homedecor.png","furniture2.png","tops.png", "dress.png", "footwear.png", "shirts.png", "shoes.png","watches.png","womenwatch.png", "handbags.png", "jewellery.png", "sunglasses.png", "Automative.png","motorcycle.png", "lighting.png"]
-
+    //MARK: IBOutlets
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productDescriptionLabel: UILabel!
+    
+}
+class AddToCartTableViewController: UITableViewController {
+    
+        
+    //MARK: Variables
+    var productTitleArray = NSMutableArray()
+    var productDescriptionArray = NSMutableArray()
+    var productImageArray = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
-        alamofireJsonData()
+
+        alamofireProductsNetwork()
+        
+       self.tableView.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        //Registering cell if not register then app crashes
-        self.tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
     }
 
-    
-    //Calling Category API
-    func alamofireJsonData() {
-        
-        Alamofire.request("https://dummyjson.com/products/categories", method: .get, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+    //MARK: Functions
+    func alamofireProductsNetwork () {
+        //for a particular category load the api
+        Alamofire.request("https://dummyjson.com/products/category/smartphones", method: .get, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             switch response.result {
                 case .success:
-                if let categoryDict: NSArray = response.value as! NSArray? {
-                    print(categoryDict)
-                    self.categroryData = categoryDict as! [String]
+                if let productDict: NSDictionary = response.value as! NSDictionary? {
+                    print(productDict)
                     
-                    if self.categroryData.count > 0 {
+                    let products = productDict["products"] as? [NSDictionary]
+                    for product in products! {
+                        print(product)
+                        let title = product["title"] as! String
+                        let description = product["description"] as! String
+                        let modelImage = product["thumbnail"] as! String
+                        
+                        self.productTitleArray.add(title)
+                        self.productDescriptionArray.add(description)
+                        self.productImageArray.add(modelImage)
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
+               
                 }
                 break
                 case .failure(let error):
@@ -50,61 +68,33 @@ class CategoryTableViewController: UITableViewController {
             }
         }
         
-    }
-    
-    // MARK: - Table view data source
+    }    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categroryData.count
+        return productDescriptionArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! CategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "productIdentifier", for: indexPath) as! ProductTableViewCell
         
-        //setting label to category
-        let dict = categroryData[indexPath.row]
-        cell.categoryLabel.text = dict as String
-        
-        //adding category image
-        let categoryImage = categoryImageArray[indexPath.row]
-        cell.imageView?.image = UIImage(named: categoryImage)
-        
-        // Configure the cell...
-
+        let productTitle = (productTitleArray[indexPath.row] as AnyObject) as? String
+        let productDescription = (productDescriptionArray[indexPath.row] as AnyObject) as? String
+        let productImage = (productImageArray[indexPath.row] as AnyObject) as? String
+        cell.productNameLabel.text = productTitle
+        cell.productDescriptionLabel.text = productDescription
+        cell.imageView?.image = UIImage(named: productImage!)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //get the category name to print that speicific data on table view
-        
-        let addToCartViewController = self.storyboard?.instantiateViewController(withIdentifier: "addToCartTableViewController") as! AddToCartTableViewController
-        self.navigationController?.pushViewController(addToCartViewController, animated: true)
-    }
-    func setImage(_ image: UIImage) {
-        
-        //properties added for image view
-        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
-        iconView.image = image
-        
-      //image container view properties which will have image inside it
-       let iconContainerView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
-       iconContainerView.addSubview(iconView)
-        
-    }
-
-
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-     //  return UITableView.automaticDimension
-        return 50
-        
+        return UITableView.automaticDimension
     }
 
     /*

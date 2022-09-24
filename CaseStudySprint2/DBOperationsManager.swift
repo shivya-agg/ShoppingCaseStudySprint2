@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+//MARK: Class
 class DBOperationsManager: NSObject {
     class func dbManagerSharedInstance() -> DBOperationsManager {
         struct Singleton {
@@ -16,6 +17,8 @@ class DBOperationsManager: NSObject {
         return Singleton.sharedInstance
     }
     
+    //MARK: Functions
+    //inserting user data
     func insertUserData(name: String, emailId: String, mobile: String, password: String) {
         
         let managedContentObject = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
@@ -36,7 +39,7 @@ class DBOperationsManager: NSObject {
        // return true
     }
 
-
+//fetching user data
     func fetchUserRecord() -> [UserData] {
         let manageContent = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
         
@@ -50,6 +53,24 @@ class DBOperationsManager: NSObject {
             print(error.localizedDescription)
             fatalError("failed")
         }
+    }
+    
+    
+    //inserting product data
+    
+    func insertProductData(name: String, detail: String) {
+        
+        let managedContentObject = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
+        
+                
+        do {
+            try managedContentObject.save()
+            print("Core data insertion successful")
+        } catch(let error){
+            print(error.localizedDescription)
+        }
+        
+       // return true
     }
 
 }

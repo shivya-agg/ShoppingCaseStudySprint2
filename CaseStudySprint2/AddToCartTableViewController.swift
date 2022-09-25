@@ -13,11 +13,11 @@ class ProductTableViewCell: UITableViewCell {
     //MARK: IBOutlets
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
-    
+    @IBOutlet weak var addToCartImage: UIImageView!
+
 }
 class AddToCartTableViewController: UITableViewController {
     
-        
     //MARK: Variables
     var productTitleArray = NSMutableArray()
     var productDescriptionArray = NSMutableArray()
@@ -28,12 +28,15 @@ class AddToCartTableViewController: UITableViewController {
         alamofireProductsNetwork()
         
        self.tableView.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")
+        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
 
     //MARK: Functions
     func alamofireProductsNetwork () {
@@ -80,6 +83,8 @@ class AddToCartTableViewController: UITableViewController {
         return productDescriptionArray.count
     }
 
+    var pName: String = ""
+    var pDetail: String = ""
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productIdentifier", for: indexPath) as! ProductTableViewCell
@@ -90,12 +95,48 @@ class AddToCartTableViewController: UITableViewController {
         cell.productNameLabel.text = productTitle
         cell.productDescriptionLabel.text = productDescription
         cell.imageView?.image = UIImage(named: productImage!)
+        
+        pName = productTitle!
+        pDetail = productDescription!
+        
+        //adding gesture tap on add to cart image view cell
+        let cartTapGesture = UITapGestureRecognizer(target: self, action: #selector(cartImageTapped(sender:)))
+        cell.addToCartImage.addGestureRecognizer(cartTapGesture)
+        cell.addToCartImage.isUserInteractionEnabled = true
+  
         return cell
     }
     
+    //MARK: Image Tap Gesture function
+    @objc func cartImageTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            print("image tapped")
+            //rowSelected(productName: pName, productDetail: pDetail)
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let pTitle = (productTitleArray[indexPath.row] as AnyObject) as! String
+        let pData = (productDescriptionArray[indexPath.row] as AnyObject) as! String
+        
+        DBOperationsManager.dbManagerSharedInstance().insertProductData(name: pTitle, detail: pData)
+        let array = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
+        print(array)
+       
+      //  rowSelected(productName: pTitle, productDetail: pData)
+    }
+    /*func rowSelected(productName: String, productDetail: String) {
+       DBOperationsManager.dbManagerSharedInstance().insertProductData(name: productName, detail: productDetail)
+       let array = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
+       print(array)
+    }*/
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.

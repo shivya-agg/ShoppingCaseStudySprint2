@@ -57,15 +57,16 @@ class DBOperationsManager: NSObject {
     
     
     //inserting product data
-    
     func insertProductData(name: String, detail: String) {
         
         let managedContentObject = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
-        
+        let product = Product(context: managedContentObject)
+        product.name = name
+        product.detail = detail
                 
         do {
             try managedContentObject.save()
-            print("Core data insertion successful")
+            print("Core data product insertion successful")
         } catch(let error){
             print(error.localizedDescription)
         }
@@ -73,4 +74,21 @@ class DBOperationsManager: NSObject {
        // return true
     }
 
+    
+    //fetching product data
+        func fetchProductRecord() -> [Product] {
+            
+            let manageContent = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
+            let request: NSFetchRequest<Product> = Product.fetchRequest()
+            
+            request.returnsObjectsAsFaults = false
+            do {
+                let productRecordArray = try manageContent.fetch(request)
+                return productRecordArray
+            } catch(let error) {
+                print(error.localizedDescription)
+                fatalError("failed")
+            }
+        }
+        
 }

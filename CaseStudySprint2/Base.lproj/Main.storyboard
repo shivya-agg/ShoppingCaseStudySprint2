@@ -282,14 +282,56 @@
         <!--Cart-->
         <scene sceneID="POe-70-kQg">
             <objects>
-                <viewController id="RWS-Y6-iUg" sceneMemberID="viewController">
+                <viewController id="RWS-Y6-iUg" customClass="UserProductCartViewController" customModule="CaseStudySprint2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="thc-DB-oDa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="M7p-10-9b3">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCartIdentifier" id="c92-Db-0pe" customClass="ProductCartViewCell" customModule="CaseStudySprint2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c92-Db-0pe" id="hpx-BA-5uB" customClass="ProductCartViewCell" customModule="CaseStudySprint2" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJR-Vj-GoE">
+                                                    <rect key="frame" x="40" y="11" width="42" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qJR-Vj-GoE" firstAttribute="top" secondItem="hpx-BA-5uB" secondAttribute="topMargin" id="5n6-0Q-Oja"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qJR-Vj-GoE" secondAttribute="trailing" constant="20" symbolic="YES" id="6EU-2t-2Jz"/>
+                                                <constraint firstItem="qJR-Vj-GoE" firstAttribute="leading" secondItem="hpx-BA-5uB" secondAttribute="leadingMargin" constant="20" id="RVA-gK-5TQ"/>
+                                                <constraint firstItem="qJR-Vj-GoE" firstAttribute="centerY" secondItem="hpx-BA-5uB" secondAttribute="centerY" id="mJt-1q-f0W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cartProductNameLabel" destination="qJR-Vj-GoE" id="36w-ae-cqB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qJx-aL-YgH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="M7p-10-9b3" firstAttribute="top" secondItem="qJx-aL-YgH" secondAttribute="top" id="Pio-pa-Ggq"/>
+                            <constraint firstItem="qJx-aL-YgH" firstAttribute="bottom" secondItem="M7p-10-9b3" secondAttribute="bottom" id="eWR-gW-5er"/>
+                            <constraint firstItem="qJx-aL-YgH" firstAttribute="trailing" secondItem="M7p-10-9b3" secondAttribute="trailing" id="qaF-ii-OrL"/>
+                            <constraint firstItem="M7p-10-9b3" firstAttribute="leading" secondItem="qJx-aL-YgH" secondAttribute="leading" id="rpT-J3-3bt"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cart" id="999-9w-3Zl"/>
+                    <connections>
+                        <outlet property="userProductsTableView" destination="M7p-10-9b3" id="AvM-nW-jmD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bL7-dw-xLc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -388,6 +430,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addToCartImage" destination="W8z-BZ-6od" id="TE3-Zl-Gig"/>
                                     <outlet property="productDescriptionLabel" destination="rhm-Tl-fqz" id="ua6-ny-a5C"/>
                                     <outlet property="productNameLabel" destination="wj8-YA-vab" id="tjs-Qp-oky"/>
                                 </connections>

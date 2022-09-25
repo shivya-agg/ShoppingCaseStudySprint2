@@ -11,8 +11,12 @@ import UIKit
 class ProductCartViewCell: UITableViewCell {
     
     //MARK: IBOutlets
+    
     @IBOutlet weak var cartProductNameLabel: UILabel!
-    @IBOutlet weak var cartProductDetailsLabel: UILabel!
+    
+    @IBOutlet weak var cartProductDetailLabel: UILabel!
+    
+    @IBOutlet weak var cartCheckoutImage: UIImageView!
 }
 
 class UserProductCartTableViewController: UITableViewController {
@@ -21,6 +25,7 @@ class UserProductCartTableViewController: UITableViewController {
     //MARK: Variables
     let userCartArray = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
     
+    //MARK: Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,13 +43,10 @@ class UserProductCartTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
         print(userCartArray)
         return userCartArray.count
     }
@@ -54,14 +56,34 @@ class UserProductCartTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCartIdentifier") as! ProductCartViewCell
         let productsCart = userCartArray[indexPath.row]
+     
+        
         cell.cartProductNameLabel.text = productsCart.name
-        cell.cartProductDetailsLabel.text = productsCart.detail
-
+        cell.cartProductDetailLabel.text = productsCart.detail
+        
+        
+        //adding gesture tap on add to cart image view cell
+        let checkoutCartTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.checkoutCartImageTapped))
+        cell.cartCheckoutImage.addGestureRecognizer(checkoutCartTapGesture)
+        cell.cartCheckoutImage.isUserInteractionEnabled = true
+        
         return cell
     }
     
+    //MARK: Checkout order Image Tap Gesture function
+    
+    //navigating to checkout view controller once tapped on checkout cart image
+    @objc func checkoutCartImageTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let checkoutOrderViewController = self.storyboard?.instantiateViewController(withIdentifier: "checkoutOrderViewController") as! CheckoutViewController
+            self.navigationController?.pushViewController(checkoutOrderViewController, animated: true)
+        }
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 150
     }
 
     /*

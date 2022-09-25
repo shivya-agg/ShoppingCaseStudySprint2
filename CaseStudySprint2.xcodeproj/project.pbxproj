@@ -10,6 +10,8 @@
 		3D143E2C901271A1CEA4E54A /* Pods_CaseStudySprint2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B89E76B72AF8D685A6C9910 /* Pods_CaseStudySprint2Tests.framework */; };
 		5CB0463DA3B2BF035127FC33 /* Pods_CaseStudySprint2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C08BE07572F0E0A2FD0FDE /* Pods_CaseStudySprint2.framework */; };
 		CEA4643114F9DA454DEC519A /* Pods_CaseStudySprint2_CaseStudySprint2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98CD8C7601E26DF261A52F7 /* Pods_CaseStudySprint2_CaseStudySprint2UITests.framework */; };
+		D70AD06A28E0A85000D1B25D /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70AD06928E0A85000D1B25D /* CheckoutViewController.swift */; };
+		D70AD06C28E0BFF300D1B25D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70AD06B28E0BFF300D1B25D /* NotificationViewController.swift */; };
 		D719A65F28DF60470097A4EE /* AddToCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D719A65E28DF60470097A4EE /* AddToCartTableViewController.swift */; };
 		D749F8EB28E06ADB008B6185 /* UserProductCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D749F8EA28E06ADB008B6185 /* UserProductCartTableViewController.swift */; };
 		D758F8A228DAD428007072F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758F8A128DAD428007072F6 /* AppDelegate.swift */; };
@@ -59,6 +61,8 @@
 		BC3C990E60D0D87479738E1A /* Pods-CaseStudySprint2-CaseStudySprint2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudySprint2-CaseStudySprint2UITests.debug.xcconfig"; path = "Target Support Files/Pods-CaseStudySprint2-CaseStudySprint2UITests/Pods-CaseStudySprint2-CaseStudySprint2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7C08BE07572F0E0A2FD0FDE /* Pods_CaseStudySprint2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaseStudySprint2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAA66461AA8E1D4814DF9DA /* Pods-CaseStudySprint2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudySprint2.debug.xcconfig"; path = "Target Support Files/Pods-CaseStudySprint2/Pods-CaseStudySprint2.debug.xcconfig"; sourceTree = "<group>"; };
+		D70AD06928E0A85000D1B25D /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		D70AD06B28E0BFF300D1B25D /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		D719A65E28DF60470097A4EE /* AddToCartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartTableViewController.swift; sourceTree = "<group>"; };
 		D749F8EA28E06ADB008B6185 /* UserProductCartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProductCartTableViewController.swift; sourceTree = "<group>"; };
 		D758F89E28DAD428007072F6 /* CaseStudySprint2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaseStudySprint2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,7 @@
 				D758F8A328DAD428007072F6 /* SceneDelegate.swift */,
 				D758F8D428DAD4E3007072F6 /* DeviceAuthentication.swift */,
 				D7A2043D28DC4753005719EA /* FirebaseAuthentication.swift */,
+				D7A2043F28DC47BE005719EA /* Validation.swift */,
 				D7A2043928DC2FD7005719EA /* LoginViewController.swift */,
 				D758F8DA28DB23DC007072F6 /* SignUpViewController.swift */,
 				D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */,
@@ -161,7 +166,8 @@
 				D758F8E028DB7588007072F6 /* CategoryTableViewController.swift */,
 				D719A65E28DF60470097A4EE /* AddToCartTableViewController.swift */,
 				D749F8EA28E06ADB008B6185 /* UserProductCartTableViewController.swift */,
-				D7A2043F28DC47BE005719EA /* Validation.swift */,
+				D70AD06928E0A85000D1B25D /* CheckoutViewController.swift */,
+				D70AD06B28E0BFF300D1B25D /* NotificationViewController.swift */,
 				D7A2044128DC4859005719EA /* DBOperationsManager.swift */,
 				D758F8A728DAD428007072F6 /* Main.storyboard */,
 				D758F8AD28DAD429007072F6 /* Assets.xcassets */,
@@ -445,6 +451,7 @@
 			files = (
 				D758F8DB28DB23DC007072F6 /* SignUpViewController.swift in Sources */,
 				D758F8AC28DAD428007072F6 /* CaseStudySprint2.xcdatamodeld in Sources */,
+				D70AD06C28E0BFF300D1B25D /* NotificationViewController.swift in Sources */,
 				D7A2044028DC47BE005719EA /* Validation.swift in Sources */,
 				D758F8E128DB7588007072F6 /* CategoryTableViewController.swift in Sources */,
 				D7A2044228DC4859005719EA /* DBOperationsManager.swift in Sources */,
@@ -456,6 +463,7 @@
 				D758F8A428DAD428007072F6 /* SceneDelegate.swift in Sources */,
 				D7A2043A28DC2FD7005719EA /* LoginViewController.swift in Sources */,
 				D719A65F28DF60470097A4EE /* AddToCartTableViewController.swift in Sources */,
+				D70AD06A28E0A85000D1B25D /* CheckoutViewController.swift in Sources */,
 				D758F8D528DAD4E3007072F6 /* DeviceAuthentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,7 +19,7 @@ class DBOperationsManager: NSObject {
     
     //MARK: Functions
     //inserting user data
-    func insertUserData(name: String, emailId: String, mobile: String, password: String) {
+    func insertUserData(name: String, emailId: String, mobile: String, password: String) -> Bool {
         
         let managedContentObject = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
         
@@ -32,14 +32,15 @@ class DBOperationsManager: NSObject {
         do {
             try managedContentObject.save()
             print("Core data insertion successful")
-        } catch(let error){
+            return true
+            
+        }catch(let error){
             print(error.localizedDescription)
+            return false
         }
-        
-       // return true
     }
 
-//fetching user data
+    //fetching user data
     func fetchUserRecord() -> [UserData] {
         let manageContent = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
         
@@ -57,7 +58,7 @@ class DBOperationsManager: NSObject {
     
     
     //inserting product data
-    func insertProductData(name: String, detail: String) {
+    func insertProductData(name: String, detail: String) -> Bool {
         
         let managedContentObject = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
         let product = Product(context: managedContentObject)
@@ -66,12 +67,11 @@ class DBOperationsManager: NSObject {
                 
         do {
             try managedContentObject.save()
-            print("Core data product insertion successful")
+            return true
         } catch(let error){
             print(error.localizedDescription)
+            return false
         }
-        
-       // return true
     }
 
     

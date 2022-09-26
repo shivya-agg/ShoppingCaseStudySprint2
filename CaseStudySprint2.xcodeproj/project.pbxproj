@@ -36,6 +36,10 @@
 		D7AF954928E1803500CFFCCB /* LocalNotificationFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF954628E1801500CFFCCB /* LocalNotificationFramework.framework */; };
 		D7AF954A28E1803500CFFCCB /* LocalNotificationFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF954628E1801500CFFCCB /* LocalNotificationFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7AF955128E1B65300CFFCCB /* CategoryListAlamofireUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF955028E1B65200CFFCCB /* CategoryListAlamofireUrl.swift */; };
+		D7AF955728E1B7BF00CFFCCB /* LoginViewTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF955628E1B7BF00CFFCCB /* LoginViewTesting.swift */; };
+		D7AF955928E1C1D800CFFCCB /* SignupViewTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF955828E1C1D800CFFCCB /* SignupViewTesting.swift */; };
+		D7AF955B28E1CECC00CFFCCB /* LoginViewUITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF955A28E1CECC00CFFCCB /* LoginViewUITesting.swift */; };
+		D7AF955D28E1D4E800CFFCCB /* CoreDataTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF955C28E1D4E800CFFCCB /* CoreDataTesting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +125,10 @@
 		D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTabBarViewController.swift; sourceTree = "<group>"; };
 		D7AF954028E1801500CFFCCB /* LocalNotificationFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LocalNotificationFramework.xcodeproj; path = ../../LocalNotificationFramework/LocalNotificationFramework.xcodeproj; sourceTree = "<group>"; };
 		D7AF955028E1B65200CFFCCB /* CategoryListAlamofireUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListAlamofireUrl.swift; sourceTree = "<group>"; };
+		D7AF955628E1B7BF00CFFCCB /* LoginViewTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewTesting.swift; sourceTree = "<group>"; };
+		D7AF955828E1C1D800CFFCCB /* SignupViewTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewTesting.swift; sourceTree = "<group>"; };
+		D7AF955A28E1CECC00CFFCCB /* LoginViewUITesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITesting.swift; sourceTree = "<group>"; };
+		D7AF955C28E1D4E800CFFCCB /* CoreDataTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTesting.swift; sourceTree = "<group>"; };
 		D98CD8C7601E26DF261A52F7 /* Pods_CaseStudySprint2_CaseStudySprint2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaseStudySprint2_CaseStudySprint2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -219,6 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				D758F8BB28DAD429007072F6 /* CaseStudySprint2Tests.swift */,
+				D7AF955628E1B7BF00CFFCCB /* LoginViewTesting.swift */,
+				D7AF955828E1C1D800CFFCCB /* SignupViewTesting.swift */,
+				D7AF955C28E1D4E800CFFCCB /* CoreDataTesting.swift */,
 			);
 			path = CaseStudySprint2Tests;
 			sourceTree = "<group>";
@@ -228,6 +239,7 @@
 			children = (
 				D758F8C528DAD429007072F6 /* CaseStudySprint2UITests.swift */,
 				D758F8C728DAD429007072F6 /* CaseStudySprint2UITestsLaunchTests.swift */,
+				D7AF955A28E1CECC00CFFCCB /* LoginViewUITesting.swift */,
 			);
 			path = CaseStudySprint2UITests;
 			sourceTree = "<group>";
@@ -543,6 +555,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D758F8BC28DAD429007072F6 /* CaseStudySprint2Tests.swift in Sources */,
+				D7AF955D28E1D4E800CFFCCB /* CoreDataTesting.swift in Sources */,
+				D7AF955728E1B7BF00CFFCCB /* LoginViewTesting.swift in Sources */,
+				D7AF955928E1C1D800CFFCCB /* SignupViewTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AF955B28E1CECC00CFFCCB /* LoginViewUITesting.swift in Sources */,
 				D758F8C628DAD429007072F6 /* CaseStudySprint2UITests.swift in Sources */,
 				D758F8C828DAD429007072F6 /* CaseStudySprint2UITestsLaunchTests.swift in Sources */,
 			);

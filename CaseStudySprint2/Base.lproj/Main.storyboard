@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="CaseStudySprint2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="CaseStudySprint2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,7 +141,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="MfT-SS-zcZ">
             <objects>
-                <viewController id="rt4-8z-Yy9" customClass="SignUpViewController" customModule="CaseStudySprint2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="rt4-8z-Yy9" customClass="SignUpViewController" customModule="CaseStudySprint2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V0w-zG-2zI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -368,18 +368,26 @@
                                     <action selector="orderNowButtonClicked:" destination="74l-4Y-CcK" eventType="touchUpInside" id="CGd-QI-vhA"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9H2-iI-UTN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gaj-WI-Voj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9H2-iI-UTN" firstAttribute="top" secondItem="Gaj-WI-Voj" secondAttribute="top" id="1By-fH-w4f"/>
+                            <constraint firstItem="9H2-iI-UTN" firstAttribute="leading" secondItem="Gaj-WI-Voj" secondAttribute="leading" id="FaP-iH-OJ6"/>
                             <constraint firstItem="Gaj-WI-Voj" firstAttribute="bottom" secondItem="Dee-km-niJ" secondAttribute="bottom" constant="10" id="WdR-ZS-WBi"/>
                             <constraint firstItem="Dee-km-niJ" firstAttribute="leading" secondItem="Gaj-WI-Voj" secondAttribute="leading" constant="130" id="XJ3-tv-Q95"/>
                             <constraint firstItem="Gaj-WI-Voj" firstAttribute="trailing" secondItem="Dee-km-niJ" secondAttribute="trailing" constant="134" id="diU-4c-b1S"/>
+                            <constraint firstItem="Gaj-WI-Voj" firstAttribute="trailing" secondItem="9H2-iI-UTN" secondAttribute="trailing" id="fAJ-ex-Zsd"/>
+                            <constraint firstItem="Dee-km-niJ" firstAttribute="top" secondItem="9H2-iI-UTN" secondAttribute="bottom" constant="8" id="qhP-5A-XXQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Checkout Order" id="pz0-df-BuS"/>
                     <connections>
                         <outlet property="orderNowButton" destination="Dee-km-niJ" id="Jac-HA-w9K"/>
+                        <outlet property="userLocMapView" destination="9H2-iI-UTN" id="qP2-bT-VSS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Re-r6-l5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -532,14 +540,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="Zgx-Ar-h4c" customClass="CategoryTableViewCell" customModule="CaseStudySprint2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zgx-Ar-h4c" id="fUk-qE-Yiv">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWP-MD-jD0">
-                                            <rect key="frame" x="100" y="11" width="41.5" height="21.5"/>
+                                            <rect key="frame" x="100" y="11" width="41.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

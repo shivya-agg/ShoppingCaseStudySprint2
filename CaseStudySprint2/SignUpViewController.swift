@@ -102,11 +102,14 @@ class SignUpViewController: UIViewController {
             firebaseAuthentication.firebaseUserRegistration(name: signupNameTextField.text!, email: signupEmailIdTextField.text!, mobile: signupMobileTextField.text!, password: signupPasswordTextField.text!)*/
             
             //inserting user data in core data
-            DBOperationsManager.dbManagerSharedInstance().insertUserData(name: signupNameTextField.text!, emailId: signupEmailIdTextField.text!, mobile: signupMobileTextField.text!, password: signupPasswordTextField.text!)
+          let insertionResult = DBOperationsManager.dbManagerSharedInstance().insertUserData(name: signupNameTextField.text!, emailId: signupEmailIdTextField.text!, mobile: signupMobileTextField.text!, password: signupPasswordTextField.text!)
             
+            if insertionResult {
+            displayAlert(title: "Insertion successful", message: "Successfully inserted the data")
             //Tab bar controller - category
             let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
             self.navigationController?.pushViewController(tabBarController, animated: true)
+            }
             
         }
     }

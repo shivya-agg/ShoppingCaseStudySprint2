@@ -20,6 +20,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginEmailTextField.layer.cornerRadius = 10
+        loginPasswordTextField.layer.cornerRadius = 10
+        
         loginEmailTextField.setIcon(UIImage(named: "loginUser.png")!)
         loginPasswordTextField.setIcon(UIImage(named: "loginPassword.png")!)
         
@@ -94,6 +97,27 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func loginEmailTextfieldFocus(_ sender: Any) {
+        loginEmailTextField.layer.borderWidth = 1
+        loginEmailTextField.layer.borderColor = UIColor.orange.cgColor
+    }
+    
+    
+    @IBAction func loginEmailTextfieldHideFocus(_ sender: Any) {
+        
+        loginEmailTextField.layer.borderColor = UIColor.clear.cgColor
+    }
+    @IBAction func loginPasswordTextfieldFocus(_ sender: Any) {
+        loginPasswordTextField.layer.borderWidth = 1
+        loginPasswordTextField.layer.borderColor = UIColor.orange.cgColor
+    }
+    
+    @IBAction func loginPasswordTextfieldHideFocus(_ sender: Any) {
+        loginPasswordTextField.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+   
 }
 
 

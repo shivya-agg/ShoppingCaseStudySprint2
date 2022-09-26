@@ -33,6 +33,9 @@
 		D7A2044028DC47BE005719EA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2043F28DC47BE005719EA /* Validation.swift */; };
 		D7A2044228DC4859005719EA /* DBOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2044128DC4859005719EA /* DBOperationsManager.swift */; };
 		D7A2044428DC72AB005719EA /* ShoppingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */; };
+		D7AF954928E1803500CFFCCB /* LocalNotificationFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF954628E1801500CFFCCB /* LocalNotificationFramework.framework */; };
+		D7AF954A28E1803500CFFCCB /* LocalNotificationFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7AF954628E1801500CFFCCB /* LocalNotificationFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7AF955128E1B65300CFFCCB /* CategoryListAlamofireUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF955028E1B65200CFFCCB /* CategoryListAlamofireUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +53,35 @@
 			remoteGlobalIDString = D758F89D28DAD428007072F6;
 			remoteInfo = CaseStudySprint2;
 		};
+		D7AF954528E1801500CFFCCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7AF954028E1801500CFFCCB /* LocalNotificationFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7AF951928E1694D00CFFCCB;
+			remoteInfo = LocalNotificationFramework;
+		};
+		D7AF954728E1801500CFFCCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7AF954028E1801500CFFCCB /* LocalNotificationFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7AF952328E1694D00CFFCCB;
+			remoteInfo = LocalNotificationFrameworkTests;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D7AF954B28E1803500CFFCCB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D7AF954A28E1803500CFFCCB /* LocalNotificationFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		06738CFF955C603096474D22 /* Pods-CaseStudySprint2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudySprint2Tests.release.xcconfig"; path = "Target Support Files/Pods-CaseStudySprint2Tests/Pods-CaseStudySprint2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +119,8 @@
 		D7A2043F28DC47BE005719EA /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D7A2044128DC4859005719EA /* DBOperationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBOperationsManager.swift; sourceTree = "<group>"; };
 		D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTabBarViewController.swift; sourceTree = "<group>"; };
+		D7AF954028E1801500CFFCCB /* LocalNotificationFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LocalNotificationFramework.xcodeproj; path = ../../LocalNotificationFramework/LocalNotificationFramework.xcodeproj; sourceTree = "<group>"; };
+		D7AF955028E1B65200CFFCCB /* CategoryListAlamofireUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListAlamofireUrl.swift; sourceTree = "<group>"; };
 		D98CD8C7601E26DF261A52F7 /* Pods_CaseStudySprint2_CaseStudySprint2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaseStudySprint2_CaseStudySprint2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AF954928E1803500CFFCCB /* LocalNotificationFramework.framework in Frameworks */,
 				5CB0463DA3B2BF035127FC33 /* Pods_CaseStudySprint2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +188,7 @@
 		D758F8A028DAD428007072F6 /* CaseStudySprint2 */ = {
 			isa = PBXGroup;
 			children = (
+				D7AF954028E1801500CFFCCB /* LocalNotificationFramework.xcodeproj */,
 				D758F8A128DAD428007072F6 /* AppDelegate.swift */,
 				D758F8A328DAD428007072F6 /* SceneDelegate.swift */,
 				D758F8D428DAD4E3007072F6 /* DeviceAuthentication.swift */,
@@ -164,6 +199,7 @@
 				D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */,
 				D758F8DE28DB7569007072F6 /* CategoryTableViewCell.swift */,
 				D758F8E028DB7588007072F6 /* CategoryTableViewController.swift */,
+				D7AF955028E1B65200CFFCCB /* CategoryListAlamofireUrl.swift */,
 				D719A65E28DF60470097A4EE /* AddToCartTableViewController.swift */,
 				D749F8EA28E06ADB008B6185 /* UserProductCartTableViewController.swift */,
 				D70AD06928E0A85000D1B25D /* CheckoutViewController.swift */,
@@ -196,6 +232,15 @@
 			path = CaseStudySprint2UITests;
 			sourceTree = "<group>";
 		};
+		D7AF954128E1801500CFFCCB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7AF954628E1801500CFFCCB /* LocalNotificationFramework.framework */,
+				D7AF954828E1801500CFFCCB /* LocalNotificationFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FF972127B0FF4D14A2B6D6E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +266,7 @@
 				D758F89B28DAD428007072F6 /* Frameworks */,
 				D758F89C28DAD428007072F6 /* Resources */,
 				4EC87969BE7CB41D88B0C361 /* [CP] Embed Pods Frameworks */,
+				D7AF954B28E1803500CFFCCB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,6 +350,12 @@
 			mainGroup = D758F89528DAD428007072F6;
 			productRefGroup = D758F89F28DAD428007072F6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D7AF954128E1801500CFFCCB /* Products */;
+					ProjectRef = D7AF954028E1801500CFFCCB /* LocalNotificationFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D758F89D28DAD428007072F6 /* CaseStudySprint2 */,
@@ -312,6 +364,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D7AF954628E1801500CFFCCB /* LocalNotificationFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LocalNotificationFramework.framework;
+			remoteRef = D7AF954528E1801500CFFCCB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D7AF954828E1801500CFFCCB /* LocalNotificationFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LocalNotificationFrameworkTests.xctest;
+			remoteRef = D7AF954728E1801500CFFCCB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D758F89C28DAD428007072F6 /* Resources */ = {
@@ -459,6 +528,7 @@
 				D749F8EB28E06ADB008B6185 /* UserProductCartTableViewController.swift in Sources */,
 				D758F8DF28DB7569007072F6 /* CategoryTableViewCell.swift in Sources */,
 				D7A2043E28DC4753005719EA /* FirebaseAuthentication.swift in Sources */,
+				D7AF955128E1B65300CFFCCB /* CategoryListAlamofireUrl.swift in Sources */,
 				D7A2044428DC72AB005719EA /* ShoppingTabBarViewController.swift in Sources */,
 				D758F8A428DAD428007072F6 /* SceneDelegate.swift in Sources */,
 				D7A2043A28DC2FD7005719EA /* LoginViewController.swift in Sources */,

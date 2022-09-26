@@ -22,7 +22,7 @@ extension UIViewController {
     
     //password validation
     func passwordValidation(password: String) -> Bool {
-        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"
+        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@%!.#$%&?])[A-Za-z\\d@$!%*#?&]{6,}$"
         let passwordCheck = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordCheck.evaluate(with: password)
     }

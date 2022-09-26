@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 
+
 class ProductTableViewCell: UITableViewCell {
     
     //MARK: IBOutlets
@@ -21,27 +22,24 @@ class AddToCartTableViewController: UITableViewController {
     //MARK: Variables
     var productTitleArray = NSMutableArray()
     var productDescriptionArray = NSMutableArray()
-    var productImageArray = NSMutableArray()
+    var productImageArray = NSMutableArray() 
+    
+    var categoryName: String?     //MARK: stores category name fetched from category list View controller
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        alamofireProductsNetwork()
+        
+        let urlValue = url(categoryValue: categoryName!)
+        alamofireProductsNetwork(api: urlValue)
         
        self.tableView.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+      
     }
-    
-
     //MARK: Functions
-    func alamofireProductsNetwork () {
-        //for a particular category load the api
-        Alamofire.request("https://dummyjson.com/products/category/smartphones", method: .get, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+    func alamofireProductsNetwork (api: String) {
+        
+        //for a particular category loading specific api
+        Alamofire.request(api, method: .get, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             switch response.result {
                 case .success:
                 if let productDict: NSDictionary = response.value as! NSDictionary? {
@@ -71,7 +69,8 @@ class AddToCartTableViewController: UITableViewController {
             }
         }
         
-    }    // MARK: - Table view data source
+    }
+    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

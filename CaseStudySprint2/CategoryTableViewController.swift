@@ -83,9 +83,13 @@ class CategoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //get the category name to print that speicific data on table view
         
         let addToCartViewController = self.storyboard?.instantiateViewController(withIdentifier: "addToCartTableViewController") as! AddToCartTableViewController
+        
+        //get the category name to print that speicific data on table view
+        let categorySelectedName = categroryData[indexPath.row]
+        addToCartViewController.categoryName = categorySelectedName
+        
         self.navigationController?.pushViewController(addToCartViewController, animated: true)
     }
     func setImage(_ image: UIImage) {

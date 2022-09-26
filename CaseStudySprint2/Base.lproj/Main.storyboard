@@ -32,13 +32,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="SPD-bA-tpR">
                                 <rect key="frame" x="20" y="483" width="374" height="120"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hxs-kj-WpQ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email id" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hxs-kj-WpQ">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="XK7-JS-Da7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                        <connections>
+                                            <action selector="loginEmailTextfieldFocus:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="TDJ-l1-d6V"/>
+                                            <action selector="loginEmailTextfieldHideFocus:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="ozI-8m-5do"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yPz-54-ucK">
                                         <rect key="frame" x="0.0" y="75" width="374" height="45"/>
@@ -47,6 +51,10 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="loginPasswordTextfieldFocus:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="d8l-cw-gaI"/>
+                                            <action selector="loginPasswordTextfieldHideFocus:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="m7L-xF-qZE"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -80,7 +88,7 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="rt4-8z-Yy9" kind="show" id="9wq-TT-XZa"/>
+                                            <segue destination="rt4-8z-Yy9" kind="show" id="d7a-Rb-sAQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -378,7 +386,7 @@
             </objects>
             <point key="canvasLocation" x="5098.5507246376819" y="508.92857142857139"/>
         </scene>
-        <!--Notification View Controller-->
+        <!--Notification Screen-->
         <scene sceneID="fp2-RI-M3I">
             <objects>
                 <viewController storyboardIdentifier="notificationViewController" id="yLI-kx-Aqr" customClass="NotificationViewController" customModule="CaseStudySprint2" customModuleProvider="target" sceneMemberID="viewController">
@@ -390,6 +398,9 @@
                                 <rect key="frame" x="139" y="432.5" width="136.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Local Notification"/>
+                                <connections>
+                                    <action selector="localNotificationButtonClicked:" destination="yLI-kx-Aqr" eventType="touchUpInside" id="Df7-9a-n9y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V3h-Oe-uth"/>
@@ -399,12 +410,7 @@
                             <constraint firstItem="dmy-1q-neX" firstAttribute="centerX" secondItem="P6B-uD-sc3" secondAttribute="centerX" id="V8F-ll-gHo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="L6n-93-kDf">
-                        <barButtonItem key="backBarButtonItem" title="Category list" id="Pjq-M6-vD3"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="backButton" destination="Pjq-M6-vD3" id="XCg-I4-46y"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Notification Screen" id="L6n-93-kDf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiO-ZF-a03" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -482,6 +488,12 @@
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        </tabBarAppearance>
+                        <tabBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        </tabBarAppearance>
                     </tabBar>
                     <connections>
                         <segue destination="JMW-3M-Zzh" kind="relationship" relationship="viewControllers" id="12x-vI-36K"/>
@@ -503,7 +515,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Rwn-44-Ygk"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iGD-Kw-E6P"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMN-ip-2Pj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -567,6 +579,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZjA-nk-oDK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         </navigationBarAppearance>
@@ -592,11 +607,11 @@
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                         </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                            <textAttributes key="titleTextAttributes">
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            </textAttributes>
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>

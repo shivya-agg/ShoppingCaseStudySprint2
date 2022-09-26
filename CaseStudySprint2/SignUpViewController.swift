@@ -26,6 +26,13 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        signupNameTextField.layer.cornerRadius = 10
+        signupEmailIdTextField.layer.cornerRadius = 10
+        signupMobileTextField.layer.cornerRadius = 10
+        signupPasswordTextField.layer.cornerRadius = 10
+        confirmPasswordTextField.layer.cornerRadius = 10
+        
+        //setting image icons on each text fields
         signupNameTextField.setIcon(UIImage(named: "signupUser.png")!)
         signupEmailIdTextField.setIcon(UIImage(named: "signupMail.png")!)
         signupMobileTextField.setIcon(UIImage(named: "mobile.png")!)
@@ -35,11 +42,12 @@ class SignUpViewController: UIViewController {
         //hiding back button
         navigationItem.hidesBackButton = true
         
-        //image properties
+        //main image properties
         userauthenticationImage.layer.borderWidth = 0.5
         userauthenticationImage.layer.cornerRadius = userauthenticationImage.frame.height / 2
         userauthenticationImage.clipsToBounds = true
         
+        //MARK: Button properties
         //signup button properties
         signupButton.layer.cornerRadius = 15
         
@@ -67,12 +75,12 @@ class SignUpViewController: UIViewController {
         
         //checks password validation
         else if !passwordValidation(password: signupPasswordTextField.text!){
-            displayAlert(title: "Invalid Password", message: "Password should be alphanumeric with minimum 6 characters")
+            displayAlert(title: "Invalid Password", message: "Password should be alphanumeric with minimum 6 characters including a special character")
         }
         
         //checks email validation
         else if !emailValidation(emailid: signupEmailIdTextField.text!){
-            displayAlert(title: "Invalid Email", message: "Invalid email id")
+            displayAlert(title: "Invalid Email", message: "Invalid email id eg john.rodger@gmail.com")
         }
         
         //checking if email id already exists
@@ -98,9 +106,12 @@ class SignUpViewController: UIViewController {
             
             //Tab bar controller - category
             let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-            self.navigationController?.pushViewController(tabBarController, animated: true)        }
+            self.navigationController?.pushViewController(tabBarController, animated: true)
+            
+        }
     }
     
+  
     
     /*
      // MARK: - Navigation

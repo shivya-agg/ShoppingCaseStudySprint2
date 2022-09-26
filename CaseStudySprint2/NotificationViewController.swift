@@ -6,16 +6,24 @@
 //
 
 import UIKit
+import LocalNotificationFramework
 
 class NotificationViewController: UIViewController {
 
-    @IBOutlet weak var backButton: UIBarButtonItem!
     
+    let placedOrderNotifcation = NotificationTriggerViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backButton.title = "category list"
+        navigationItem.hidesBackButton = true
+        
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBAction func localNotificationButtonClicked(_ sender: Any) {
+        placedOrderNotifcation.localNotification()
     }
     
 

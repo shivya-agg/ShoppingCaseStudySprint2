@@ -10,21 +10,18 @@ import Alamofire
 
 class CategoryTableViewController: UITableViewController {
 
-   //creating category data array
+    //MARK: Variables
+    //MARK: Category Data array
     var categroryData = [String]()
     
-    //image array
+    //MARK: Category image array
     var categoryImageArray = ["smartphone2.png","laptop.png", "fragrances.png", "skincare.png", "groceries.png", "homedecor.png","furniture2.png","tops.png", "dress.png", "footwear.png", "shirts.png", "shoes.png","watches.png","womenwatch.png", "handbags.png", "jewellery.png", "sunglasses.png", "Automative.png","motorcycle.png", "lighting.png"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         alamofireJsonData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+    
         //Registering cell if not register then app crashes
         self.tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
     }
@@ -55,8 +52,7 @@ class CategoryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        
+        // return the number of sections
         return 1
     }
 
@@ -76,7 +72,6 @@ class CategoryTableViewController: UITableViewController {
         //adding category image
         let categoryImage = categoryImageArray[indexPath.row]
         cell.imageView?.image = UIImage(named: categoryImage)
-        
         // Configure the cell...
 
         return cell
@@ -92,18 +87,6 @@ class CategoryTableViewController: UITableViewController {
         
         self.navigationController?.pushViewController(addToCartViewController, animated: true)
     }
-    func setImage(_ image: UIImage) {
-        
-        //properties added for image view
-        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
-        iconView.image = image
-        
-      //image container view properties which will have image inside it
-       let iconContainerView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
-       iconContainerView.addSubview(iconView)
-        
-    }
-
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      //  return UITableView.automaticDimension

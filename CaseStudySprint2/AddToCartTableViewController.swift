@@ -14,15 +14,16 @@ class ProductTableViewCell: UITableViewCell {
     //MARK: IBOutlets
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var productCategoryImage: UIImageView?
+    
     @IBOutlet weak var addToCartImage: UIImageView!
     
 }
 class AddToCartTableViewController: UITableViewController {
     
     //MARK: Variables
-    var productTitleArray = NSMutableArray()
-    var productDescriptionArray = NSMutableArray()
-    var productImageArray = NSMutableArray() 
+    var productArray = NSMutableArray()
     
     var categoryName: String?     //MARK: stores category name fetched from category list View controller
 
@@ -47,15 +48,8 @@ class AddToCartTableViewController: UITableViewController {
                     
                     let products = productDict["products"] as? [NSDictionary]
                     for product in products! {
-                        print(product)
-                        let title = product["title"] as! String
-                        let description = product["description"] as! String
-                        let modelImage = product["thumbnail"] as! String
-                        
-                        self.productTitleArray.add(title)
-                        self.productDescriptionArray.add(description)
-                        self.productImageArray.add(modelImage)
-                        
+                        self.productArray.add(product)
+                       // print(product)
                     }
                     
                     DispatchQueue.main.async {
@@ -78,24 +72,27 @@ class AddToCartTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return productDescriptionArray.count
+        return productArray.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productIdentifier", for: indexPath) as! ProductTableViewCell
+        let product = productArray[indexPath.row] as! NSDictionary
+        cell.productNameLabel.text = product.value(forKey: "title") as? String
+        cell.productDescriptionLabel.text = product.value(forKey: "description") as? String
         
-        let productTitle = (productTitleArray[indexPath.row] as AnyObject) as? String
-        let productDescription = (productDescriptionArray[indexPath.row] as AnyObject) as? String
-        let productImage = (productImageArray[indexPath.row] as AnyObject) as? String
-        cell.productNameLabel.text = productTitle
-        cell.productDescriptionLabel.text = productDescription
-        cell.imageView?.image = UIImage(named: productImage!)
-        
+        //loading image url and storing it as string in imageUrl variable
+        let imageUrl = URL(string: (product.value(forKey: "thumbnail") as! String))
+        if let imageData = try? Data(contentsOf: imageUrl!) {
+            if let loadedImage = UIImage(data: imageData) {
+                cell.productCategoryImage?.image = loadedImage
+            }
+        }
         
         //adding gesture tap on add to cart image view cell
         let cartTapGesture = UITapGestureRecognizer(target: self, action: #selector(cartImageTapped(sender:)))
+        cell.addToCartImage.tag = indexPath.row
         cell.addToCartImage.addGestureRecognizer(cartTapGesture)
         cell.addToCartImage.isUserInteractionEnabled = true
         
@@ -107,9 +104,7 @@ class AddToCartTableViewController: UITableViewController {
     //MARK: Image Tap Gesture function
     @objc func cartImageTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("image tapped")
             let selectedIndex = IndexPath(row: sender.view!.tag, section: 0)
-            print(selectedIndex)
             tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
             let indexPath = tableView.indexPathForSelectedRow
             let currentCell = tableView.cellForRow(at: indexPath!) as! ProductTableViewCell
@@ -118,6 +113,7 @@ class AddToCartTableViewController: UITableViewController {
             let productResult = DBOperationsManager.dbManagerSharedInstance().insertProductData(name: pTitle, detail: pData)
             if productResult {
                 displayAlert(title: "Added to cart", message: "Product is successfully added to cart")
+                print(DBOperationsManager.dbManagerSharedInstance().fetchProductRecord())
                 tableView.deselectRow(at: selectedIndex, animated: true)
             }
         }
@@ -125,10 +121,10 @@ class AddToCartTableViewController: UITableViewController {
  
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 150
     }
     
-    
+
 
     /*
     // Override to support conditional editing of the table view.

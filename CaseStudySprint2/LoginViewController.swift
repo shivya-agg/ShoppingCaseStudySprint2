@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -42,11 +43,11 @@ class LoginViewController: UIViewController {
         let array = DBOperationsManager.dbManagerSharedInstance().fetchUserRecord()
         print(array)
 
-        /*
+        
          let deviceAuthentication = DeviceAuthentication()
          deviceAuthentication.deviceAuthenticationByPasscode()
-         deviceAuthentication.deviceAuthenticationByFaceID()
-         */
+        // deviceAuthentication.deviceAuthenticationByFaceID()
+         
         
         //login authentication
     }
@@ -64,37 +65,21 @@ class LoginViewController: UIViewController {
         if loginEmptyFieldCheck(email: loginEmailTextField.text!, password: loginPasswordTextField.text!) {
             displayAlert(title: "Incomplete Details", message: "Kindly fill data in all text fields")
         }
-        
-        //checking if email is valid
-        else if !emailValidation(emailid: loginEmailTextField.text!) {
-            displayAlert(title: "Invalid Email Id", message: "Give proper emaild id")
-        }
-        
-        //checking if password is alphanumeric
-        else if !passwordValidation(password: loginPasswordTextField.text!){
-            displayAlert(title: "Invalid Password", message: "Password should be alphanumeric with minimum 6 characters")
-        }
-        
-        //checking if email exists then validating the password entered is correct or not
-        else if (emailExists(emailId: loginEmailTextField.text!) && !emailExistPasswordCheck(password: loginPasswordTextField.text!)){
-            displayAlert(title: "Wrong Password", message: "Kindly recheck your password")
-        }
-        
-        //checking if user does not exist then show alert to sign up
-        else if !emailExists(emailId: loginEmailTextField.text!) {
-            displayAlert(title: "User not found", message: "User does not exist. Please sign up.")
-        }
-        
-        //on successful sign up navigate to category controller
-        else {
-            
-            // validating with email and password in firebase if user is valid or not
-           // let firebaseAuthentication = FirebaseAuthentication()
-           // firebaseAuthentication.firebaseLoginValidation(email: loginEmailTextField.text!, password: loginPasswordTextField.text!)
-            
-            let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-            self.navigationController?.pushViewController(tabBarController, animated: true)
-        }
+        Auth.auth().signIn(withEmail: loginEmailTextField.text!, password: loginPasswordTextField.text!,completion: {(result, error) in
+            if let _error = error as NSError? {
+                let errorMsg = self.displayErrorMessage(error: _error)
+                self.displayAlertMessage(message: errorMsg)
+              
+            }
+            else  {
+                //on successful login redirect to category tab bar
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! ShoppingTabBarViewController
+                self.navigationController?.pushViewController(tabBarController, animated: true)
+                
+            }
+        })
+       
     }
     
     

@@ -14,7 +14,7 @@ class DeviceAuthentication: UIViewController {
     //MARK: Variables
     let context: LAContext = LAContext()
     var authenticationError: NSError?
-    let authenticationStr = "Authentication is needed to access app"  //MARK: Authentication string
+    let authenticationStr = "Authentication is needed to access app" //MARK: Authentication string
     
     //MARK: Authentication functions
     //MARK: Passcode Authentication
@@ -22,11 +22,11 @@ class DeviceAuthentication: UIViewController {
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authenticationError) {
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: authenticationStr, reply: { success, error in
                 if success {
-                    self.showAlert(title: "Success", message: "User authenticated successfully")
+                    self.showAlert(title: "Success", message: "Device authentication successful")
                     
                 }
                 else {
-                    if let error = error {
+                    if let error = error as NSError? {
                         let message = self.displayMessageWithErrorCode(errorCode: error as! Int)
                         self.showAlert(title: "Error", message: message)
                     }

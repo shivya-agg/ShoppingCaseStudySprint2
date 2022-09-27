@@ -76,7 +76,6 @@ class CheckoutViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     //MARK: Error displaying function
     //this function shows message in case of any error while fetching user location
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         displayAlert(title: "Error", message: "Failed to fetch user location")
     }

@@ -29,7 +29,6 @@
 		D758F8E128DB7588007072F6 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758F8E028DB7588007072F6 /* CategoryTableViewController.swift */; };
 		D7A2043A28DC2FD7005719EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2043928DC2FD7005719EA /* LoginViewController.swift */; };
 		D7A2043C28DC40A3005719EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7A2043B28DC40A3005719EA /* GoogleService-Info.plist */; };
-		D7A2043E28DC4753005719EA /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2043D28DC4753005719EA /* FirebaseAuthentication.swift */; };
 		D7A2044028DC47BE005719EA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2043F28DC47BE005719EA /* Validation.swift */; };
 		D7A2044228DC4859005719EA /* DBOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2044128DC4859005719EA /* DBOperationsManager.swift */; };
 		D7A2044428DC72AB005719EA /* ShoppingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */; };
@@ -119,7 +118,6 @@
 		D758F8E028DB7588007072F6 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		D7A2043928DC2FD7005719EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D7A2043B28DC40A3005719EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D7A2043D28DC4753005719EA /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
 		D7A2043F28DC47BE005719EA /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D7A2044128DC4859005719EA /* DBOperationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBOperationsManager.swift; sourceTree = "<group>"; };
 		D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTabBarViewController.swift; sourceTree = "<group>"; };
@@ -200,15 +198,14 @@
 				D758F8A128DAD428007072F6 /* AppDelegate.swift */,
 				D758F8A328DAD428007072F6 /* SceneDelegate.swift */,
 				D758F8D428DAD4E3007072F6 /* DeviceAuthentication.swift */,
-				D7A2043D28DC4753005719EA /* FirebaseAuthentication.swift */,
 				D7A2043F28DC47BE005719EA /* Validation.swift */,
 				D7A2043928DC2FD7005719EA /* LoginViewController.swift */,
 				D758F8DA28DB23DC007072F6 /* SignUpViewController.swift */,
-				D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */,
 				D758F8DE28DB7569007072F6 /* CategoryTableViewCell.swift */,
 				D758F8E028DB7588007072F6 /* CategoryTableViewController.swift */,
 				D7AF955028E1B65200CFFCCB /* CategoryListAlamofireUrl.swift */,
 				D719A65E28DF60470097A4EE /* AddToCartTableViewController.swift */,
+				D7A2044328DC72AB005719EA /* ShoppingTabBarViewController.swift */,
 				D749F8EA28E06ADB008B6185 /* UserProductCartTableViewController.swift */,
 				D70AD06928E0A85000D1B25D /* CheckoutViewController.swift */,
 				D70AD06B28E0BFF300D1B25D /* NotificationViewController.swift */,
@@ -539,7 +536,6 @@
 				D758F8A228DAD428007072F6 /* AppDelegate.swift in Sources */,
 				D749F8EB28E06ADB008B6185 /* UserProductCartTableViewController.swift in Sources */,
 				D758F8DF28DB7569007072F6 /* CategoryTableViewCell.swift in Sources */,
-				D7A2043E28DC4753005719EA /* FirebaseAuthentication.swift in Sources */,
 				D7AF955128E1B65300CFFCCB /* CategoryListAlamofireUrl.swift in Sources */,
 				D7A2044428DC72AB005719EA /* ShoppingTabBarViewController.swift in Sources */,
 				D758F8A428DAD428007072F6 /* SceneDelegate.swift in Sources */,

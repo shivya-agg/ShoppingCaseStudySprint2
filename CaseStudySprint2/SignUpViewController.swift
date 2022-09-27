@@ -53,6 +53,8 @@ class SignUpViewController: UIViewController {
         
         //back button properties
         backButton.layer.cornerRadius = 15
+
+     
     }
     
     //MARK: IBActions
@@ -78,18 +80,6 @@ class SignUpViewController: UIViewController {
             displayAlert(title: "Invalid Password", message: "Password should be alphanumeric with minimum 6 characters including a special character")
         }
         
-        //checks email validation
-        else if !emailValidation(emailid: signupEmailIdTextField.text!){
-            displayAlert(title: "Invalid Email", message: "Invalid email id eg john.rodger@gmail.com")
-        }
-        
-        //checking if email id already exists
-        else if emailExists(emailId: signupEmailIdTextField.text!){
-            displayAlert(title: "Duplicate Email", message: "Email Id already exists")
-            let array = DBOperationsManager.dbManagerSharedInstance().fetchUserRecord()
-            print(array)
-        }
-        
         //checking password and confirm password is a match if not gives alert message
         else if !confirmPasswordValidation(password: signupPasswordTextField.text!, confirmPass: confirmPasswordTextField.text!){
             displayAlert(title: "Mismatch", message: "Passwords mismatch.Try again")
@@ -97,25 +87,85 @@ class SignUpViewController: UIViewController {
         
         //else saving the data in coredata and firebase
         else {
+            
             //saving firebase data
-            /*let firebaseAuthentication = FirebaseAuthentication()
-            firebaseAuthentication.firebaseUserRegistration(name: signupNameTextField.text!, email: signupEmailIdTextField.text!, mobile: signupMobileTextField.text!, password: signupPasswordTextField.text!)*/
-            
-            //inserting user data in core data
-          let insertionResult = DBOperationsManager.dbManagerSharedInstance().insertUserData(name: signupNameTextField.text!, emailId: signupEmailIdTextField.text!, mobile: signupMobileTextField.text!, password: signupPasswordTextField.text!)
-            
-            if insertionResult {
-            displayAlert(title: "Insertion successful", message: "Successfully inserted the data")
-            //Tab bar controller - category
-            let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-            self.navigationController?.pushViewController(tabBarController, animated: true)
+            Auth.auth().createUser(withEmail: signupEmailIdTextField.text!, password: signupPasswordTextField.text!, completion: {(result, error) -> Void in
+                
+                if let _error = error as NSError? {
+                    let errorMsg = self.displayErrorMessage(error: _error)
+                    self.displayAlertMessage(message: errorMsg)
+                } else  {
+                    
+                    //Tab bar controller - category
+                    let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! ShoppingTabBarViewController
+                    
+                    self.navigationController?.pushViewController(tabBarController, animated: true)
+                    
+                    let insertionResult = DBOperationsManager.dbManagerSharedInstance().insertUserData(name: self.signupNameTextField.text!, emailId: self.signupEmailIdTextField.text!.lowercased(), mobile: self.signupMobileTextField.text!, password: self.signupPasswordTextField.text!)
+                       
+                       if insertionResult {
+                           self.displayAlert(title: "Sign up successful", message: "You have successfully signed up")
+                           return
+                       }
+                        
+                    }
+              })
             }
-            
         }
-    }
-    
   
     
+    
+    @IBAction func signupNameFocus(_ sender: Any) {
+        signupNameTextField.layer.borderWidth = 1
+        signupNameTextField.layer.borderColor = UIColor.orange.cgColor
+    }
+    
+    
+     @IBAction func signupNameHideFocus(_ sender: Any) {
+         signupNameTextField.layer.borderColor = UIColor.clear.cgColor
+     }
+     
+    
+    @IBAction func signupEmailFocus(_ sender: Any) {
+        signupEmailIdTextField.layer.borderWidth = 1
+        signupEmailIdTextField.layer.borderColor = UIColor.orange.cgColor
+    }
+    
+    @IBAction func signupEmailHideFocus(_ sender: Any) {
+        signupEmailIdTextField.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+    @IBAction func signupMobileFocus(_ sender: Any) {
+        signupMobileTextField.layer.borderWidth = 1
+        signupMobileTextField.layer.borderColor = UIColor.orange.cgColor
+    }
+    
+    @IBAction func signupMobileHideFocus(_ sender: Any) {
+        signupMobileTextField.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+    
+    @IBAction func signupPasswordFocus(_ sender: Any) {
+        signupPasswordTextField.layer.borderWidth = 1
+        signupPasswordTextField.layer.borderColor = UIColor.orange.cgColor
+        
+    }
+    
+    @IBAction func signupPasswordHideFocus(_ sender: Any) {
+        signupPasswordTextField.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+    
+    @IBAction func signupConfirmPassFocus(_ sender: Any) {
+        confirmPasswordTextField.layer.borderWidth = 1
+        confirmPasswordTextField.layer.borderColor = UIColor.orange.cgColor
+        
+    }
+    
+    
+    @IBAction func signupConfirmPassHideFocus(_ sender: Any) {
+        confirmPasswordTextField.layer.borderColor = UIColor.clear.cgColor
+    }
     /*
      // MARK: - Navigation
 

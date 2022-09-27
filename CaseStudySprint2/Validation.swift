@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import Firebase
 
 extension UIViewController {
     
@@ -20,22 +21,17 @@ extension UIViewController {
         return emailValid
     }
     
-    //password validation
-    func passwordValidation(password: String) -> Bool {
-        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@%!.#$%&?])[A-Za-z\\d@$!%*#?&]{6,}$"
-        let passwordCheck = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        return passwordCheck.evaluate(with: password)
-    }
+  
     
-    //emptyFields check
+    //login emptyFields check
     func loginEmptyFieldCheck(email: String, password: String) -> Bool {
         if (email.isEmpty && password.isEmpty || email.isEmpty || password.isEmpty) {
             return true
         }
         return false
     }
-    //sign up
     
+    //sign up
     func signupEmptyFieldCheck(name: String, email: String, mobile: String, password: String, confirmPassword: String) -> Bool {
         
         if (name.isEmpty ||  email.isEmpty || mobile.isEmpty || password.isEmpty || confirmPassword.isEmpty){
@@ -45,6 +41,14 @@ extension UIViewController {
         return false
         
     }
+    //password validation
+    func passwordValidation(password: String) -> Bool {
+        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@%!.#$%&?])[A-Za-z\\d@$!%*#?&]{6,}$"
+        let passwordCheck = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        return passwordCheck.evaluate(with: password)
+    }
+    
+    
     //mobile validation
     func mobileValidation(mobile: String) -> Bool {
         let mobileRegex = "^[0-9]{10}$"
@@ -66,7 +70,7 @@ extension UIViewController {
         return password == confirmPass
     }
     
-    //check email id if it exists or not
+    //check email id if it exists or not in database/*
     func emailExists(emailId: String) -> Bool {
         
         let context = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
@@ -87,7 +91,7 @@ extension UIViewController {
         }
         return false
     }
-    
+   
     //check if email exists then password entered by user is also correct for the respective user
     
     func emailExistPasswordCheck(password: String) -> Bool {
@@ -108,7 +112,9 @@ extension UIViewController {
         }catch(let error) {
             print(error.localizedDescription)
         }
-        return false    }
+        return false
+        
+    }
     
     //alert display
     func displayAlert(title: String, message: String) {
@@ -118,5 +124,37 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func displayErrorMessage(error: NSError) -> String {
+        var errorMessage = ""
+        guard let errorCode = AuthErrorCode.Code(rawValue: error.code) else {
+            return "Try again"
+        }
+        switch errorCode {
+            case .userNotFound:
+                errorMessage = "User does not exist. Please sign up"
+                
+            case .invalidEmail:
+                errorMessage = "Enter a valid email example: rodger123@gmail.com"
+                
+            case .weakPassword:
+                errorMessage = "Password is invalid"
+                
+            case .wrongPassword:
+                errorMessage = "Wrong password. Kindly recheck and try again"
+                
+            case .emailAlreadyInUse:
+                errorMessage = "Email id already exists"
+                
+            
+            default:
+                errorMessage = "Oops! an error occured"
+        }
+        return errorMessage
+    }
     
+    func displayAlertMessage(message: String) {
+        let alertBox = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
+        alertBox.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: nil))
+        self.present(alertBox, animated: true)
+        }
 }

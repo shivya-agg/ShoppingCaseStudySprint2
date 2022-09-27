@@ -18,7 +18,7 @@ class DBOperationsManager: NSObject {
     }
     
     //MARK: Functions
-    //inserting user data
+    //this function inserts user data in userdata database during signup
     func insertUserData(name: String, emailId: String, mobile: String, password: String) -> Bool {
         
         let managedContentObject = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
@@ -40,7 +40,7 @@ class DBOperationsManager: NSObject {
         }
     }
 
-    //fetching user data
+    //this function fetches user data that is stored in userData database
     func fetchUserRecord() -> [UserData] {
         let manageContent = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
         
@@ -57,7 +57,7 @@ class DBOperationsManager: NSObject {
     }
     
     
-    //inserting product data
+    //this function inserts product data that user adds to cart
     func insertProductData(name: String, detail: String) -> Bool {
         
         let managedContentObject = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
@@ -75,7 +75,7 @@ class DBOperationsManager: NSObject {
     }
 
     
-    //fetching product data
+        //this function is fetching product data stored in product database
         func fetchProductRecord() -> [Product] {
             
             let manageContent = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext

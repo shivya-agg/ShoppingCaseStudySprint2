@@ -11,11 +11,8 @@ import UIKit
 class ProductCartViewCell: UITableViewCell {
     
     //MARK: IBOutlets
-    
     @IBOutlet weak var cartProductNameLabel: UILabel!
-    
     @IBOutlet weak var cartProductDetailLabel: UILabel!
-    
     @IBOutlet weak var cartCheckoutImage: UIImageView!
 }
 
@@ -23,30 +20,23 @@ class UserProductCartTableViewController: UITableViewController {
 
     
     //MARK: Variables
-    let userCartArray = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
+    var userCartArray = [Product]()
     
     //MARK: Life cycle methods
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        print("view loaded")
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-
-        self.tableView.reloadData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        userCartArray = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
+     
+   
     }
- 
-  /*  override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-      
-    }*/
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+    }
  
     // MARK: - Table view data source
 
@@ -55,7 +45,6 @@ class UserProductCartTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(userCartArray)
         return userCartArray.count
     }
 
@@ -64,7 +53,6 @@ class UserProductCartTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCartIdentifier") as! ProductCartViewCell
         let productsCart = userCartArray[indexPath.row]
-     
         
         cell.cartProductNameLabel.text = productsCart.name
         cell.cartProductDetailLabel.text = productsCart.detail
@@ -87,7 +75,6 @@ class UserProductCartTableViewController: UITableViewController {
             self.navigationController?.pushViewController(checkoutOrderViewController, animated: true)
         }
     }
-    
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

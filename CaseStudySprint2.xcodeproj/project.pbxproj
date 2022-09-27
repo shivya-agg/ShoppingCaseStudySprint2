@@ -13,6 +13,8 @@
 		D70AD06A28E0A85000D1B25D /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70AD06928E0A85000D1B25D /* CheckoutViewController.swift */; };
 		D70AD06C28E0BFF300D1B25D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70AD06B28E0BFF300D1B25D /* NotificationViewController.swift */; };
 		D719A65F28DF60470097A4EE /* AddToCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D719A65E28DF60470097A4EE /* AddToCartTableViewController.swift */; };
+		D7278E1028E35E9700627680 /* CategoryTableTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7278E0F28E35E9700627680 /* CategoryTableTesting.swift */; };
+		D7278E1628E36B9000627680 /* AddToCartViewTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7278E1528E36B9000627680 /* AddToCartViewTesting.swift */; };
 		D749F8EB28E06ADB008B6185 /* UserProductCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D749F8EA28E06ADB008B6185 /* UserProductCartTableViewController.swift */; };
 		D758F8A228DAD428007072F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758F8A128DAD428007072F6 /* AppDelegate.swift */; };
 		D758F8A428DAD428007072F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758F8A328DAD428007072F6 /* SceneDelegate.swift */; };
@@ -98,6 +100,8 @@
 		D70AD06928E0A85000D1B25D /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		D70AD06B28E0BFF300D1B25D /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		D719A65E28DF60470097A4EE /* AddToCartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartTableViewController.swift; sourceTree = "<group>"; };
+		D7278E0F28E35E9700627680 /* CategoryTableTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableTesting.swift; sourceTree = "<group>"; };
+		D7278E1528E36B9000627680 /* AddToCartViewTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartViewTesting.swift; sourceTree = "<group>"; };
 		D749F8EA28E06ADB008B6185 /* UserProductCartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProductCartTableViewController.swift; sourceTree = "<group>"; };
 		D758F89E28DAD428007072F6 /* CaseStudySprint2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaseStudySprint2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D758F8A128DAD428007072F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 				D7AF955628E1B7BF00CFFCCB /* LoginViewTesting.swift */,
 				D7AF955828E1C1D800CFFCCB /* SignupViewTesting.swift */,
 				D7AF955C28E1D4E800CFFCCB /* CoreDataTesting.swift */,
+				D7278E0F28E35E9700627680 /* CategoryTableTesting.swift */,
+				D7278E1528E36B9000627680 /* AddToCartViewTesting.swift */,
 			);
 			path = CaseStudySprint2Tests;
 			sourceTree = "<group>";
@@ -553,6 +559,8 @@
 				D758F8BC28DAD429007072F6 /* CaseStudySprint2Tests.swift in Sources */,
 				D7AF955D28E1D4E800CFFCCB /* CoreDataTesting.swift in Sources */,
 				D7AF955728E1B7BF00CFFCCB /* LoginViewTesting.swift in Sources */,
+				D7278E1628E36B9000627680 /* AddToCartViewTesting.swift in Sources */,
+				D7278E1028E35E9700627680 /* CategoryTableTesting.swift in Sources */,
 				D7AF955928E1C1D800CFFCCB /* SignupViewTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,11 +14,16 @@ class NotificationViewController: UIViewController {
     //to access the methods of class creating an instance of the class
     let placedOrderNotifcation = NotificationTriggerViewController()
 
+    
+    //MARK: IBActions
+    @IBOutlet weak var localNotificationButton: UIButton!
+    
+    //MARK: Life cycle methods
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
-      
-        //navigationItem.hidesBackButton = true
+        localNotificationButton.layer.cornerRadius = 15
+        
         let newBackButton = UIBarButtonItem(title: "Category list", style: .plain, target: self, action: #selector(back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         

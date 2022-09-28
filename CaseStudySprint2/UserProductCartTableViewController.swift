@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 //MARK: Class
 class ProductCartViewCell: UITableViewCell {
@@ -61,12 +62,13 @@ class UserProductCartTableViewController: UITableViewController {
         
         //adding gesture tap on add to cart image view cell
         let checkoutCartTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.checkoutCartImageTapped))
+        cell.cartCheckoutImage.tag = indexPath.row
         cell.cartCheckoutImage.addGestureRecognizer(checkoutCartTapGesture)
         cell.cartCheckoutImage.isUserInteractionEnabled = true
         
         return cell
     }
-    
+
     //MARK: Checkout order Image Tap Gesture function
     
     //navigating to checkout view controller once tapped on checkout cart image
@@ -74,11 +76,27 @@ class UserProductCartTableViewController: UITableViewController {
         if sender.state == .ended {
             let checkoutOrderViewController = self.storyboard?.instantiateViewController(withIdentifier: "checkoutOrderViewController") as! CheckoutViewController
             self.navigationController?.pushViewController(checkoutOrderViewController, animated: true)
+            
+            //removing that particular order from cart once order placed successfully
+            let selectedIndex = IndexPath(row: sender.view!.tag, section: 0)
+            tableView.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
+            let indexPath = tableView.indexPathForSelectedRow
+            let manageContent = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
+            let objectDelete = self.userCartArray.remove(at: indexPath!.row)
+            manageContent.delete(objectDelete)
+            do {
+                try manageContent.save()
+                self.tableView.deleteRows(at: [indexPath!], with: .automatic)
+            } catch {
+                print(error)
+            }
         }
+        let array = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
+        print(array)
     }
     
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 150
     }
 
@@ -90,17 +108,18 @@ class UserProductCartTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+  /*  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
-    }
-    */
+    } */
+    
 
     /*
     // Override to support rearranging the table view.

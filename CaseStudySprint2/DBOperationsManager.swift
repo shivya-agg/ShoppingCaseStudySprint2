@@ -89,6 +89,5 @@ class DBOperationsManager: NSObject {
                 print(error.localizedDescription)
                 fatalError("failed")
             }
-        }
-        
+        }        
 }

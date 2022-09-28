@@ -44,10 +44,7 @@ class LoginViewTesting: XCTestCase {
 
     //MARK: Textfields text validation
     func testTextEnteredValidation() throws {
-        XCTAssertTrue(loginVC.emailValidation(emailid: "mike.wheelers@gmail.com"), "Email id not valid")
         XCTAssertTrue(loginVC.passwordValidation(password: "Mike@876"),"Password not valid should be minimum 6 characters, alphanumeric including special character")
-        XCTAssertTrue(loginVC.emailExists(emailId: "mike.wheelers@gmail.com"), "Email does not exist in the database")
-        XCTAssertTrue(loginVC.emailExistPasswordCheck(password: "Mike@876"),"Password does not match with the database")
         
     }
     

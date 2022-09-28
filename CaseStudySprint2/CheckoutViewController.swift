@@ -54,8 +54,8 @@ class CheckoutViewController: UIViewController, CLLocationManagerDelegate, MKMap
         getAddress { (address) in
             mkAnnotation.title = address
         }
-        
         userLocMapView.addAnnotation(mkAnnotation)
+        
         func getAddress(handler: @escaping(String) -> Void) {
             let geocoder = CLGeocoder()
             let location = CLLocation(latitude: nUserLocation.coordinate.latitude, longitude: nUserLocation.coordinate.longitude)

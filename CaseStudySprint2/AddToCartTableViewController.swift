@@ -14,9 +14,7 @@ class ProductTableViewCell: UITableViewCell {
     //MARK: IBOutlets
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
-    
     @IBOutlet weak var productCategoryImage: UIImageView?
-    
     @IBOutlet weak var addToCartImage: UIImageView!
     
 }

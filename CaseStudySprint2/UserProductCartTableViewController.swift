@@ -28,9 +28,8 @@ class UserProductCartTableViewController: UITableViewController {
         super.viewDidLoad()
         
         userCartArray = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
-     
-   
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.delegate = self

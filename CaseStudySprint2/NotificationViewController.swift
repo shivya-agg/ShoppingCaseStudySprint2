@@ -28,6 +28,7 @@ class NotificationViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = newBackButton
         
     }
+    
     @objc func back(sender: UIBarButtonItem) {
        let controllers = self.navigationController?.viewControllers
         for vc in controllers! {

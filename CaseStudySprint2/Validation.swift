@@ -13,25 +13,16 @@ import Firebase
 extension UIViewController {
     
     //login
-    //email validation
-    func emailValidation(emailid: String) -> Bool {
-        let emailRegex = "^[A-Z0-9a-z.-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,64}$"
-        let emailCheck = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        let emailValid = emailCheck.evaluate(with: emailid)
-        return emailValid
-    }
-    
-  
-    
+
     //login emptyFields check
     func loginEmptyFieldCheck(email: String, password: String) -> Bool {
-        if (email.isEmpty && password.isEmpty || email.isEmpty || password.isEmpty) {
+        if (email.isEmpty || password.isEmpty) {
             return true
         }
         return false
     }
     
-    //sign up
+    //sign up empty fields check
     func signupEmptyFieldCheck(name: String, email: String, mobile: String, password: String, confirmPassword: String) -> Bool {
         
         if (name.isEmpty ||  email.isEmpty || mobile.isEmpty || password.isEmpty || confirmPassword.isEmpty){
@@ -70,53 +61,8 @@ extension UIViewController {
         return password == confirmPass
     }
     
-    //check email id if it exists or not in database/*
-    func emailExists(emailId: String) -> Bool {
-        
-        let context = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<UserData>(entityName: "UserData")
-        var customerArray: [NSManagedObject] = []
-        do {
-            customerArray = try context.fetch(fetchRequest)
-            for elements in customerArray {
-                if let email = elements.value(forKey: "emailId") as? String {
-                    if (email == emailId.lowercased()) {
-                        return true
-                }
-        
-                }
-            }
-        }catch(let error) {
-            print(error.localizedDescription)
-        }
-        return false
-    }
    
-    //check if email exists then password entered by user is also correct for the respective user
-    
-    func emailExistPasswordCheck(password: String) -> Bool {
-        let context = AppDelegate.sharedAppDelegateInstance().persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<UserData>(entityName: "UserData")
-        var customerArray: [NSManagedObject] = []
-        do {
-            customerArray = try context.fetch(fetchRequest)
-            for elements in customerArray {
-            
-                if let pass = elements.value(forKey: "password") as? String {
-                    if (pass == password) {
-                        return true
-                }
-        
-                }
-            }
-        }catch(let error) {
-            print(error.localizedDescription)
-        }
-        return false
-        
-    }
-    
-    //alert display
+    //displays alert message with different title
     func displayAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -124,6 +70,7 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    //this function returns error message corresponding to firebase error
     func displayErrorMessage(error: NSError) -> String {
         var errorMessage = ""
         guard let errorCode = AuthErrorCode.Code(rawValue: error.code) else {
@@ -152,6 +99,7 @@ extension UIViewController {
         return errorMessage
     }
     
+    //this function displays alert error message
     func displayAlertMessage(message: String) {
         let alertBox = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
         alertBox.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: nil))

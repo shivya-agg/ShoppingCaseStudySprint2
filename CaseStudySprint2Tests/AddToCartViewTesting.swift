@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Alamofire
 @testable import CaseStudySprint2
 
 class AddToCartViewTesting: XCTestCase {
@@ -16,16 +17,23 @@ class AddToCartViewTesting: XCTestCase {
     override func setUpWithError() throws {
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
-      /*  let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        addtoCartVC = storyboard.instantiateViewController(withIdentifier: "addToCartTableViewController") as? AddToCartTableViewController
-        addtoCartVC.loadViewIfNeeded()
-         */
+         
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testAlamofire() throws {
+        let e = expectation(description: "Alamofire")
+        Alamofire.request("https://dummyjson.com/products/category/groceries")
+            .response {response in
+                XCTAssertNil(response.error, "Whoops, error \(response.error!.localizedDescription)")
+                XCTAssertEqual(response.response?.statusCode ?? 0, 200, "Status code not 200")
+                e.fulfill()
+            }
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

@@ -50,13 +50,13 @@ class SignupViewTesting: XCTestCase {
     //MARK: Text testing
     func testTextValidation() throws {
         
-        XCTAssertTrue(signupVC.emailValidation(emailid: "shivya.aggarwal@gmail.com"), "Email id not valid")
         XCTAssertTrue(signupVC.passwordValidation(password: "Shiv@123"),"Password not valid should be minimum 6 characters, alphanumeric including special character")
-        XCTAssertTrue(signupVC.emailExists(emailId: "mike.wheelers@gmail.com"), "Email does not exist in the database")
         XCTAssertTrue(signupVC.nameValidation(username: "Shivya"), "Name not valid minimum 4 characters required")
         XCTAssertTrue(signupVC.mobileValidation(mobile: "9876543210"), "Mobile number not valid it has to 10 digits")
         XCTAssertTrue(signupVC.confirmPasswordValidation(password: "Shiv@123", confirmPass: "Shiv@123"))
     }
+    
+    
     
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.

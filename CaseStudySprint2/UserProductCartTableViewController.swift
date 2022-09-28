@@ -24,7 +24,6 @@ class UserProductCartTableViewController: UITableViewController {
     
     //MARK: Life cycle methods
     override func viewDidLoad() {
-        print("load")
         super.viewDidLoad()
         userCartArray = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
         tableView.delegate = self
@@ -33,7 +32,6 @@ class UserProductCartTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("didappear")
         super.viewDidAppear(animated)
         userCartArray = DBOperationsManager.dbManagerSharedInstance().fetchProductRecord()
         tableView.delegate = self

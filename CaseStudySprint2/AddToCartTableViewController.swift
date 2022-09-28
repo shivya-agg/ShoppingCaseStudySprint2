@@ -111,7 +111,6 @@ class AddToCartTableViewController: UITableViewController {
             let productResult = DBOperationsManager.dbManagerSharedInstance().insertProductData(name: pTitle, detail: pData)
             if productResult {
                 displayAlert(title: "Added to cart", message: "Product is successfully added to cart")
-                print(DBOperationsManager.dbManagerSharedInstance().fetchProductRecord())
                 tableView.deselectRow(at: selectedIndex, animated: true)
             }
         }

@@ -39,17 +39,12 @@ class LoginViewController: UIViewController {
         
         //signup button properties
         signupButton.layer.cornerRadius = 15
-     
-        let array = DBOperationsManager.dbManagerSharedInstance().fetchUserRecord()
-        print(array)
-
         
          let deviceAuthentication = DeviceAuthentication()
          deviceAuthentication.deviceAuthenticationByPasscode()
         // deviceAuthentication.deviceAuthenticationByFaceID()
          
         
-        //login authentication
     }
     
     //MARK: @IBActions

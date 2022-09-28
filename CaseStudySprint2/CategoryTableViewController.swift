@@ -34,7 +34,6 @@ class CategoryTableViewController: UITableViewController {
             switch response.result {
                 case .success:
                 if let categoryDict: NSArray = response.value as! NSArray? {
-                    print(categoryDict)
                     self.categroryData = categoryDict as! [String]
                     
                     if self.categroryData.count > 0 {
@@ -90,7 +89,7 @@ class CategoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      //  return UITableView.automaticDimension
-        return 50
+        return 60
         
     }
 
